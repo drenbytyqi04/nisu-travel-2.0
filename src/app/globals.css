@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+/* ============================================================
+   NISU TRAVEL — Design tokens
+   Palette is fixed by the brand brief: deep charcoal ground,
+   warm-white type, jade primary, soft sky secondary.
+   ============================================================ */
+
+@theme {
+  /* Ground */
+  --color-ink: #07090b;
+  --color-ink-2: #0b0f13;
+  --color-ink-3: #11171d;
+  --color-ink-4: #18202a;
+
+  /* Type */
+  --color-paper: #f0ede6;
+  --color-paper-dim: #a7b0b6;
+  --color-paper-faint: #7a838a;
+
+  /* Accents */
+  --color-jade: #5dbb63;
+  --color-jade-deep: #2f7a45;
+  --color-jade-glow: #8ad98f;
+  --color-sky: #8fc7e8;
+  --color-sky-deep: #3f7fa3;
+
+  /* Lines */
+  --color-line: rgba(240, 237, 230, 0.1);
+  --color-line-strong: rgba(240, 237, 230, 0.2);
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", monospace;
+
+  /* Spacious scale — density dial 3/10 */
+  --spacing-section: 7rem;
+  --spacing-section-lg: 10rem;
+
+  --radius-card: 1.25rem;
+  --radius-plate: 1.75rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+
+  --animate-drift: drift 24s ease-in-out infinite alternate;
+  --animate-marquee: marquee 42s linear infinite;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2%, -2%, 0) scale(1.08);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  background-color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Lenis drives scrolling; native smooth would fight it. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-jade);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-jade);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Only hide the ring for mouse users, never for keyboard. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================================
+   Typographic devices
+   ============================================================ */
+
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  letter-spacing: -0.022em;
+}
+
+/* Hero-scale display type: optical size cranked up, tight leading. */
+.display-xl {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-paper-dim);
+}
+
+/* Tabular figures keep counters and coordinates from jittering. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.balance {
+  text-wrap: balance;
+}
+.pretty {
+  text-wrap: pretty;
+}
+
+/* Long user/URL-ish strings reflow instead of overflowing. */
+.wrap-anywhere {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* ============================================================
+   Surfaces
+   ============================================================ */
+
+.glass {
+  background: color-mix(in oklab, var(--color-ink-2) 72%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--color-line);
+}
+
+.hairline-t {
+  border-top: 1px solid var(--color-line);
+}
+
+/* Film grain — sold separately from the gradient so it can be reused. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 90% at 50% 35%,
+    transparent 30%,
+    rgba(7, 9, 11, 0.55) 78%,
+    rgba(7, 9, 11, 0.9) 100%
+  );
+}
+
+/* Hide scrollbars on deliberate horizontal rails. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scrolling chip rails fade out rather than hard-clipping a half-chip. */
+.rail-fade {
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 88%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0, #000 88%, transparent 100%);
+}
+@media (min-width: 1280px) {
+  .rail-fade {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* ============================================================
+   Motion — everything below collapses under reduced-motion.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
