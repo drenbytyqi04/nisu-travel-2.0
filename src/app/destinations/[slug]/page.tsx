@@ -9,6 +9,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/sections/PageHero";
 import { Button } from "@/components/ui/button";
 import { Container, RouteDivider, Section } from "@/components/ui/section";
+import type { ImageKey } from "@/data/images";
 import { destinations, getDestination } from "@/content/destinations";
 import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
@@ -57,8 +58,7 @@ export default async function DestinationPage({
         eyebrow={destination.country}
         title={destination.name}
         intro={destination.line}
-        image={destination.image}
-        artKey={`dest-${destination.slug}`}
+        imageKey={`dest-${destination.slug}` as ImageKey}
         meta={destination.coords}
         breadcrumb={[
           { label: "Home", href: "/" },

@@ -6,13 +6,7 @@ import { Media } from "@/components/media/Media";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/section";
-import { img } from "@/lib/images";
 
-const storyArt = img(
-  "A wide empty coastline at the end of the day",
-  "bosphorus",
-  "coast",
-);
 
 /** Slow, quiet, full-bleed. The emotional beat before the conversion push. */
 export function TravelStory() {
@@ -34,7 +28,7 @@ export function TravelStory() {
         className="absolute inset-[-14%] -z-10"
         style={reduced ? undefined : { y, scale }}
       >
-        <Media image={storyArt} artKey="story-plate" decorative sizes="100vw" />
+        <Media imageKey="story-plate" decorative sizes="100vw" />
       </motion.div>
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/55" />
 

@@ -89,9 +89,28 @@ and needs no backend at all. It appears as soon as `contact.whatsapp` is set.
 
 ## Imagery
 
-The site ships with **generated cinematic artwork** rather than stock photos —
-see [PHOTOGRAPHY.md](./PHOTOGRAPHY.md) for what that means and how to swap in
-real photography (it is a one-line change per image).
+All 58 images are declared in **one file**: `src/data/images.ts`. That registry
+is the only place you edit to change photography.
+
+Each entry carries a photo `src` (currently an Unsplash URL), an `alt` written
+as a photo brief, and a `palette`/`composition` pair that keeps a generated
+plate available as the fallback.
+
+```bash
+npm run photos:check   # verifies every photo URL resolves
+```
+
+⚠️ **The Unsplash IDs have not been verified.** They were assigned in an
+environment where Unsplash is unreachable, so the subject of each photo is a
+best guess. Run `npm run photos:check` on a normal network — it lists any entry
+whose URL does not resolve — and open the site to check that each photo shows
+what its `alt` text describes.
+
+Anything that fails to load falls back automatically to its generated plate
+(see `components/media/Photo.tsx`), so a wrong ID degrades gracefully instead
+of showing a broken image.
+
+See [PHOTOGRAPHY.md](./PHOTOGRAPHY.md) for the full detail.
 
 ---
 
@@ -103,12 +122,13 @@ src/
   components/
     layout/       nav, footer, smooth scroll, scroll progress, WhatsApp CTAs
     motion/       Reveal, AnimatedText, Counter, Parallax, Magnetic
-    media/        Media (photo-or-plate switch), Plate (generated artwork)
+    media/        Media (registry lookup), Photo (with fallback), Plate (art)
     sections/     one file per page section
     cards/        destination, service, package, post
     ui/           button, form fields, section scaffolding
   content/        site.config.ts + typed content arrays
-  lib/            art engine, image types, SEO/schema helpers, utils
+  data/           images.ts — the central image registry (all 58 images)
+  lib/            art engine, SEO/schema helpers, utils
 ```
 
 ## Motion
@@ -128,5 +148,6 @@ present in the DOM and readable without JavaScript.
 - Native `<select>` and `<input type="date">` for correct mobile pickers
 - Gallery lightbox and mobile menu use Radix Dialog (focus trap + Escape)
 - Testimonial auto-advance pauses on hover and focus
-- Zero external image or script requests; artwork is inline SVG, so no CLS
+- Photos are lazy-loaded and served as AVIF/WebP via `next/image`; the plate
+  fallback is inline SVG, so neither path causes layout shift
 - Fonts self-hosted via `next/font` with `display: swap`

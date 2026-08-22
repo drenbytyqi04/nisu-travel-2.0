@@ -2,7 +2,6 @@ import { PackagesIndex } from "@/components/sections/PackagesIndex";
 import { PageHero } from "@/components/sections/PageHero";
 import { RequestCTA } from "@/components/sections/RequestCTA";
 import { packages } from "@/content/packages";
-import { img } from "@/lib/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -19,8 +18,7 @@ export default function PackagesPage() {
         eyebrow="Packages"
         title="Made for Your Next Escape."
         intro="Starting points, not fixed products. Every one gets rebuilt around your dates, your budget and who is travelling."
-        image={img("A resort shoreline in late afternoon light", "tropic", "coast")}
-        artKey="page-packages"
+        imageKey="page-packages"
         meta={`${packages.length} packages`}
         breadcrumb={[
           { label: "Home", href: "/" },

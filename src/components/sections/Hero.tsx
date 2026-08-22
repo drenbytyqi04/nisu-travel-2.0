@@ -10,13 +10,7 @@ import { Magnetic } from "@/components/motion/Magnetic";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/section";
 import { stats } from "@/content/site.config";
-import { img } from "@/lib/images";
 
-const heroArt = img(
-  "An aircraft climbing above the cloud line into first light",
-  "altitude",
-  "aerial",
-);
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -40,7 +34,7 @@ export function Hero() {
         className="absolute inset-0 -z-10"
         style={reduced ? undefined : { y, scale }}
       >
-        <Media image={heroArt} artKey="hero-departure" priority decorative sizes="100vw" />
+        <Media imageKey="hero-departure" priority decorative sizes="100vw" />
       </motion.div>
 
       {/* Cinematic grade: dark at the base so type always clears contrast. */}

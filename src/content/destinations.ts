@@ -1,4 +1,3 @@
-import { img, type ImageRef } from "@/lib/images";
 
 export type Destination = {
   slug: string;
@@ -19,7 +18,6 @@ export type Destination = {
   bestFor: string[];
   season: string;
   flightNote: string;
-  image: ImageRef;
 };
 
 /**
@@ -46,11 +44,6 @@ export const destinations: Destination[] = [
     bestFor: ["City Breaks", "Couples", "Culture"],
     season: "April–June, September–November",
     flightNote: "Short-haul from Prishtina, comfortable as a long weekend.",
-    image: img(
-      "Minarets and ferry traffic on the Bosphorus at dusk, Istanbul",
-      "bosphorus",
-      "city",
-    ),
   },
   {
     slug: "dubai",
@@ -70,11 +63,6 @@ export const destinations: Destination[] = [
     bestFor: ["Luxury", "Family", "City Breaks"],
     season: "November–March",
     flightNote: "Connecting routes; we plan the layover so it works for you.",
-    image: img(
-      "Amber dusk over the Dubai skyline seen from the desert",
-      "gulf",
-      "city",
-    ),
   },
   {
     slug: "santorini",
@@ -94,11 +82,6 @@ export const destinations: Destination[] = [
     bestFor: ["Couples", "Luxury", "Beach"],
     season: "May–June, September–October",
     flightNote: "Seasonal routes; often best paired with Athens.",
-    image: img(
-      "Whitewashed caldera villages above the Aegean, Santorini",
-      "aegean",
-      "coast",
-    ),
   },
   {
     slug: "bali",
@@ -118,11 +101,6 @@ export const destinations: Destination[] = [
     bestFor: ["Long-haul", "Couples", "Nature"],
     season: "April–October",
     flightNote: "Long-haul with one or two connections.",
-    image: img(
-      "Terraced green hillsides in humid morning light, Bali",
-      "tropic",
-      "tropic",
-    ),
   },
   {
     slug: "barcelona",
@@ -142,11 +120,6 @@ export const destinations: Destination[] = [
     bestFor: ["City Breaks", "Family", "Culture"],
     season: "May–June, September",
     flightNote: "Short-haul; frequent European connections.",
-    image: img(
-      "Terracotta rooftops and Mediterranean light, Barcelona",
-      "catalan",
-      "city",
-    ),
   },
   {
     slug: "egypt",
@@ -166,11 +139,6 @@ export const destinations: Destination[] = [
     bestFor: ["Family", "Beach", "Culture"],
     season: "October–April",
     flightNote: "Charter and connecting options depending on season.",
-    image: img(
-      "Desert dunes and the Nile valley in late gold light, Egypt",
-      "nile",
-      "desert",
-    ),
   },
   {
     slug: "switzerland",
@@ -190,11 +158,6 @@ export const destinations: Destination[] = [
     bestFor: ["Nature", "Diaspora", "Family"],
     season: "Year-round",
     flightNote: "A core diaspora route — we plan these constantly.",
-    image: img(
-      "Snow-lit alpine peaks above a cold blue valley, Switzerland",
-      "alpine",
-      "peaks",
-    ),
   },
   {
     slug: "germany",
@@ -214,11 +177,6 @@ export const destinations: Destination[] = [
     bestFor: ["Diaspora", "City Breaks", "Culture"],
     season: "Year-round",
     flightNote: "The most-requested route we handle.",
-    image: img(
-      "Cool northern light over a river city, Germany",
-      "rhine",
-      "city",
-    ),
   },
 ];
 

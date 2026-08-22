@@ -1,13 +1,12 @@
-import Image from "next/image";
 import { plateSpec } from "@/lib/art";
-import type { ImageRef } from "@/lib/images";
+import { getImage, type ImageKey } from "@/data/images";
 import { cn } from "@/lib/utils";
+import { Photo } from "./Photo";
 import { Plate } from "./Plate";
 
 type Props = {
-  image: ImageRef;
-  /** Stable key for the generated art. Same key always yields the same plate. */
-  artKey: string;
+  /** Looks the image up in `src/data/images.ts` — the single registry. */
+  imageKey: ImageKey;
   className?: string;
   sizes?: string;
   priority?: boolean;
@@ -16,34 +15,38 @@ type Props = {
   decorative?: boolean;
 };
 
+/**
+ * Renders the registry entry's photograph when it has a `src`, and the
+ * generated plate when it does not — or when the photograph fails to load.
+ */
 export function Media({
-  image,
-  artKey,
+  imageKey,
   className,
   sizes = "100vw",
   priority,
   route,
   decorative,
 }: Props) {
-  if (image.src) {
-    return (
-      <Image
-        src={image.src}
-        alt={decorative ? "" : image.alt}
-        aria-hidden={decorative || undefined}
-        fill
-        sizes={sizes}
-        priority={priority}
-        className={cn("object-cover", className)}
-      />
-    );
-  }
+  const image = getImage(imageKey);
+  const spec = plateSpec(imageKey, image.palette, image.composition);
 
-  const spec = plateSpec(artKey, image.palette, image.composition);
-  return (
+  const plate = (
     <div className={cn("absolute inset-0", className)}>
       <Plate {...spec} route={route} />
       {!decorative && <span className="sr-only">{image.alt}</span>}
     </div>
+  );
+
+  if (!image.src) return plate;
+
+  return (
+    <Photo
+      src={image.src}
+      alt={decorative ? "" : image.alt}
+      sizes={sizes}
+      priority={priority}
+      className={className}
+      fallback={plate}
+    />
   );
 }

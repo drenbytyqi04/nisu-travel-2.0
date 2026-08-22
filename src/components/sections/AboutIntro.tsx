@@ -6,13 +6,7 @@ import { Parallax } from "@/components/motion/Parallax";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/button";
 import { Container, RouteDivider, Section } from "@/components/ui/section";
-import { img } from "@/lib/images";
 
-const aboutArt = img(
-  "An aircraft on approach over a European city at dusk",
-  "rhine",
-  "city",
-);
 
 const pillars = [
   "Personalised service",
@@ -30,7 +24,7 @@ export function AboutIntro({ full = false }: { full?: boolean }) {
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
           <Reveal y={24}>
             <Parallax className="aspect-[4/5] rounded-plate border border-line" distance={30} scale>
-              <Media image={aboutArt} artKey="about-plate" sizes="(max-width: 1024px) 92vw, 46vw" />
+              <Media imageKey="about-plate" sizes="(max-width: 1024px) 92vw, 46vw" />
             </Parallax>
           </Reveal>
 

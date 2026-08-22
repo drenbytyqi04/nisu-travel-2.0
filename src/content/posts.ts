@@ -1,4 +1,3 @@
-import { img, type ImageRef } from "@/lib/images";
 
 export type Post = {
   slug: string;
@@ -10,7 +9,6 @@ export type Post = {
   readingTime: string;
   /** Paragraphs. A CMS would return rich text here instead. */
   body: string[];
-  image: ImageRef;
 };
 
 /**
@@ -32,7 +30,6 @@ export const posts: Post[] = [
       "Egypt is the value option and stays comfortable later into autumn than most people expect. It is also the region where hotel choice matters most — the gap between resorts is enormous.",
       "For long-haul, book by February. Prices for July and August do not improve as the date approaches, whatever the internet tells you.",
     ],
-    image: img("Summer coastline seen from above", "aegean", "coast"),
   },
   {
     slug: "weekend-escapes-in-europe",
@@ -47,7 +44,6 @@ export const posts: Post[] = [
       "Istanbul passes easily and offers more than most capitals twice its reputation. Vienna and Budapest work for the same reason — short flights and compact centres.",
       "Book the hotel by neighbourhood, not by price. On a two-night trip, twenty minutes of commuting each way is a meaningful share of the holiday.",
     ],
-    image: img("A compact European city centre at night", "rhine", "city"),
   },
   {
     slug: "what-to-pack",
@@ -62,7 +58,6 @@ export const posts: Post[] = [
       "Keep passports, booking references, insurance and any visa paperwork in one place — physical and photographed. Every problem we help solve mid-trip is easier when this exists.",
       "Medication, chargers and one change of clothes belong in your cabin bag, always. Checked luggage catches up with you eventually; the first evening does not wait.",
     ],
-    image: img("Packed luggage in the light of an early departure", "terminal", "aerial"),
   },
   {
     slug: "destinations-for-couples",
@@ -77,7 +72,6 @@ export const posts: Post[] = [
       "Santorini in shoulder season, the Amalfi coast in May, Ubud away from the main road — all of them are transformed by going slightly off the peak week.",
       "If it is a honeymoon or an anniversary, tell the hotel when we book. It costs nothing and changes the welcome.",
     ],
-    image: img("A quiet terrace above the sea at sunset", "aegean", "coast"),
   },
   {
     slug: "family-holiday-ideas",
@@ -92,7 +86,6 @@ export const posts: Post[] = [
       "Direct flights at civilised times are worth paying for. So are connecting rooms, and a hotel where food is available outside fixed hours.",
       "Turkey and Egypt remain the strongest value for families travelling from Kosovo, with Spain and Greece close behind in shoulder season.",
     ],
-    image: img("A resort pool and garden in the afternoon", "tropic", "coast"),
   },
   {
     slug: "diaspora-travel-tips",
@@ -107,7 +100,6 @@ export const posts: Post[] = [
       "Fares in these windows are set by demand months ahead. Booking early is not a small saving — it is usually the difference between a comfortable fare and an uncomfortable one.",
       "If your dates have any flexibility at all, tell us the range rather than a single day. It is frequently worth a great deal.",
     ],
-    image: img("A departure board and waiting travellers", "terminal", "city"),
   },
 ];
 

@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Media } from "@/components/media/Media";
+import type { ImageKey } from "@/data/images";
 import type { Destination } from "@/content/destinations";
 import { cn } from "@/lib/utils";
 
@@ -25,8 +26,7 @@ export function DestinationCard({
         {/* Slow zoom on hover — transform only, so nothing reflows. */}
         <div className="absolute inset-0 transition-transform duration-[1200ms] ease-out group-hover:scale-[1.07]">
           <Media
-            image={destination.image}
-            artKey={`dest-${destination.slug}`}
+            imageKey={`dest-${destination.slug}` as ImageKey}
             decorative
             sizes={sizes}
           />

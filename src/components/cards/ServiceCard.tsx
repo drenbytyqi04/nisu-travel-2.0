@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Media } from "@/components/media/Media";
+import type { ImageKey } from "@/data/images";
 import type { Service } from "@/content/services";
 import { cn } from "@/lib/utils";
 
@@ -53,8 +54,7 @@ export function ServiceCard({
       <div className="absolute inset-0">
         <div className="absolute inset-0 opacity-60 transition-all duration-[1200ms] ease-out group-hover:scale-[1.06] group-hover:opacity-80">
           <Media
-            image={service.image}
-            artKey={`svc-${service.id}`}
+            imageKey={`svc-${service.id}` as ImageKey}
             decorative
             sizes="(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 30vw"
           />

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Media } from "@/components/media/Media";
+import type { ImageKey } from "@/data/images";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { Button } from "@/components/ui/button";
 import { nav } from "@/content/site.config";
@@ -119,8 +120,7 @@ export function Nav() {
                   {/* Destination art behind the menu, heavily graded down. */}
                   <div className="pointer-events-none absolute inset-0 opacity-40">
                     <Media
-                      image={menuArt.image}
-                      artKey={`menu-${menuArt.slug}`}
+                      imageKey={`dest-${menuArt.slug}` as ImageKey}
                       decorative
                       sizes="100vw"
                     />

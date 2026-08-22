@@ -4,7 +4,6 @@ import { PageHero } from "@/components/sections/PageHero";
 import { RequestCTA } from "@/components/sections/RequestCTA";
 import { Container, Section } from "@/components/ui/section";
 import { sortedPosts } from "@/content/posts";
-import { img } from "@/lib/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -21,8 +20,7 @@ export default function InspirationPage() {
         eyebrow="Journal"
         title="Travel Inspiration"
         intro="What we tell people who ask — where to go, when to book, and what is genuinely worth the flight."
-        image={img("An open landscape at the start of a journey", "alpine", "peaks")}
-        artKey="page-inspiration"
+        imageKey="page-inspiration"
         meta={`${sortedPosts.length} articles`}
         breadcrumb={[
           { label: "Home", href: "/" },

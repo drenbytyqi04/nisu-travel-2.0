@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Expand, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Media } from "@/components/media/Media";
+import type { ImageKey } from "@/data/images";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container, Section, SectionHeading } from "@/components/ui/section";
 import { galleryCategories, galleryItems } from "@/content/gallery";
@@ -102,8 +103,7 @@ export function Gallery({ limit }: { limit?: number }) {
                 >
                   <div className="absolute inset-0 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.08]">
                     <Media
-                      image={item.image}
-                      artKey={`gal-${item.id}`}
+                      imageKey={`gal-${item.id}` as ImageKey}
                       decorative
                       sizes="(max-width: 640px) 48vw, 25vw"
                     />
@@ -120,7 +120,7 @@ export function Gallery({ limit }: { limit?: number }) {
                     />
                   </div>
                   <span className="sr-only">
-                    Open “{item.caption}” full screen. {item.image.alt}
+                    Open “{item.caption}” full screen.
                   </span>
                 </button>
               </motion.li>
@@ -137,7 +137,7 @@ export function Gallery({ limit }: { limit?: number }) {
               {active ? active.caption : "Gallery"}
             </Dialog.Title>
             <Dialog.Description className="sr-only">
-              {active ? active.image.alt : ""}
+              {active ? active.caption : ""}
             </Dialog.Description>
 
             <div className="flex items-center justify-between">
@@ -159,8 +159,7 @@ export function Gallery({ limit }: { limit?: number }) {
               <figure className="relative mt-4 flex min-h-0 flex-1 flex-col">
                 <div className="relative min-h-0 flex-1 overflow-hidden rounded-plate border border-line">
                   <Media
-                    image={active.image}
-                    artKey={`gal-${active.id}`}
+                    imageKey={`gal-${active.id}` as ImageKey}
                     decorative
                     sizes="100vw"
                   />

@@ -3,10 +3,6 @@ import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Parallax } from "@/components/motion/Parallax";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container, RouteDivider, Section } from "@/components/ui/section";
-import { img } from "@/lib/images";
-
-const big = img("A wide coastline seen from the air in morning light", "aegean", "coast");
-const small = img("A quiet hotel terrace before the day begins", "tropic", "tropic");
 
 /**
  * Asymmetric editorial block. The small plate overlaps the large one and
@@ -69,7 +65,7 @@ export function TravelExperience() {
                 distance={34}
                 scale
               >
-                <Media image={big} artKey="experience-primary" sizes="(max-width: 1024px) 92vw, 46vw" />
+                <Media imageKey="experience-primary" sizes="(max-width: 1024px) 92vw, 46vw" />
               </Parallax>
             </Reveal>
 
@@ -80,7 +76,7 @@ export function TravelExperience() {
                   className="aspect-square rounded-card border border-line-strong shadow-[0_24px_70px_-20px_rgba(0,0,0,0.8)]"
                   distance={-26}
                 >
-                  <Media image={small} artKey="experience-secondary" sizes="240px" />
+                  <Media imageKey="experience-secondary" sizes="240px" />
                 </Parallax>
               </div>
             </Reveal>

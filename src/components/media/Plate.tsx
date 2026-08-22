@@ -26,7 +26,7 @@ type Props = {
  * Renders as pure inline SVG: no network request, no layout shift, no
  * decoding cost, and it grades correctly against the charcoal ground in a
  * way stock photography usually does not. Swap in real photography by
- * setting `src` on the matching entry in `src/lib/images.ts`.
+ * setting `src` on the matching entry in `src/data/images.ts`.
  */
 export function Plate({ palette, composition, seed, className, route }: Props) {
   const id = `p${seed.toString(36)}`;

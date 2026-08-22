@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { Location } from "@/components/sections/Location";
 import { PageHero } from "@/components/sections/PageHero";
 import { RequestFormPanel } from "@/components/sections/RequestFormPanel";
-import { img } from "@/lib/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -19,8 +18,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Let's Plan Your Next Journey."
         intro="Message us, call us, or come in. Whichever is easiest — you reach the same people either way."
-        image={img("Evening light over a harbour city", "catalan", "city")}
-        artKey="page-contact"
+        imageKey="page-contact"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Contact", href: "/contact" },

@@ -6,6 +6,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/sections/PageHero";
 import { RequestCTA } from "@/components/sections/RequestCTA";
 import { Container, Section } from "@/components/ui/section";
+import type { ImageKey } from "@/data/images";
 import { getPost, posts, sortedPosts } from "@/content/posts";
 import { site } from "@/content/site.config";
 import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
@@ -80,8 +81,7 @@ export default async function PostPage({
       <PageHero
         eyebrow={post.category}
         title={post.title}
-        image={post.image}
-        artKey={`post-${post.slug}`}
+        imageKey={`post-${post.slug}` as ImageKey}
         meta={`${formatted} · ${post.readingTime}`}
         breadcrumb={[
           { label: "Home", href: "/" },

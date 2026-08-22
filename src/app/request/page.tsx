@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { PageHero } from "@/components/sections/PageHero";
 import { RequestFormPanel } from "@/components/sections/RequestFormPanel";
 import { Location } from "@/components/sections/Location";
-import { img } from "@/lib/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -19,8 +18,7 @@ export default function RequestPage() {
         eyebrow="Request a trip"
         title="Ready to Nisu?"
         intro="Tell us where you want to go. We'll help you plan the rest — usually with an answer the same day."
-        image={img("A runway stretching towards first light", "jade", "aerial")}
-        artKey="page-request"
+        imageKey="page-request"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Request a Trip", href: "/request" },

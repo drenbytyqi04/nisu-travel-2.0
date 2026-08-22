@@ -11,9 +11,7 @@ import { Magnetic } from "@/components/motion/Magnetic";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/section";
-import { img } from "@/lib/images";
 
-const ctaArt = img("A runway at first light before departure", "jade", "aerial");
 
 /** The climax CTA. Full screen, one decision. */
 export function RequestCTA() {
@@ -28,7 +26,7 @@ export function RequestCTA() {
       className="grain vignette relative isolate flex min-h-[90vh] items-center overflow-hidden py-28"
     >
       <motion.div className="absolute inset-[-12%] -z-10" style={reduced ? undefined : { y }}>
-        <Media image={ctaArt} artKey="cta-runway" decorative sizes="100vw" />
+        <Media imageKey="cta-runway" decorative sizes="100vw" />
       </motion.div>
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/60" />
 

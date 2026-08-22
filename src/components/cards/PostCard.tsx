@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Media } from "@/components/media/Media";
+import type { ImageKey } from "@/data/images";
 import type { Post } from "@/content/posts";
 import { cn } from "@/lib/utils";
 
@@ -11,8 +12,7 @@ export function PostCard({ post, className }: { post: Post; className?: string }
         <div className="relative aspect-[4/3] overflow-hidden rounded-card border border-line">
           <div className="absolute inset-0 transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]">
             <Media
-              image={post.image}
-              artKey={`post-${post.slug}`}
+              imageKey={`post-${post.slug}` as ImageKey}
               decorative
               sizes="(max-width: 768px) 92vw, 30vw"
             />

@@ -3,30 +3,28 @@ import { Media } from "@/components/media/Media";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/section";
-import type { ImageRef } from "@/lib/images";
+import type { ImageKey } from "@/data/images";
 
 /** Inner-page masthead. Shorter than the home hero, same grammar. */
 export function PageHero({
   eyebrow,
   title,
   intro,
-  image,
-  artKey,
+  imageKey,
   breadcrumb,
   meta,
 }: {
   eyebrow: string;
   title: string;
   intro?: string;
-  image: ImageRef;
-  artKey: string;
+  imageKey: ImageKey;
   breadcrumb?: { label: string; href: string }[];
   meta?: string;
 }) {
   return (
     <section className="grain relative isolate flex min-h-[64vh] items-end overflow-hidden pb-16 pt-40 sm:min-h-[72vh] sm:pb-20">
       <div className="absolute inset-0 -z-10">
-        <Media image={image} artKey={artKey} priority decorative sizes="100vw" />
+        <Media imageKey={imageKey} priority decorative sizes="100vw" />
       </div>
       <div
         aria-hidden="true"

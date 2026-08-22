@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
 import { Media } from "@/components/media/Media";
+import type { ImageKey } from "@/data/images";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/section";
@@ -37,8 +38,7 @@ function Frame({ destination, index }: { destination: Destination; index: number
         style={reduced ? undefined : { y, scale }}
       >
         <Media
-          image={destination.image}
-          artKey={`featured-${destination.slug}`}
+          imageKey={`dest-${destination.slug}` as ImageKey}
           decorative
           sizes="100vw"
         />
