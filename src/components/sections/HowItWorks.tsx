@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {motion, useScroll, useTransform } from "framer-motion";
+import { useReducedMotion } from "@/components/motion/MotionPreference";
 import { MessagesSquare, PlaneTakeoff, Route, Sparkles } from "lucide-react";
 import { useRef } from "react";
 import { Reveal } from "@/components/motion/Reveal";

@@ -1,6 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "@/components/motion/MotionPreference";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";

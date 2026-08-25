@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, JetBrains_Mono, Manrope } from "next/font/google";
 import { Schema } from "@/components/Schema";
+import { MotionProvider } from "@/components/motion/MotionPreference";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
@@ -79,16 +80,18 @@ export default function RootLayout({
     >
       <body className="min-h-dvh bg-ink antialiased">
         <Schema data={organisationSchema()} />
-        <LoadingScreen />
-        <SmoothScroll />
-        <ScrollProgress />
-        <Nav />
-        <main id="main">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
-        <StickyMobileCTA />
+        <MotionProvider>
+          <LoadingScreen />
+          <SmoothScroll />
+          <ScrollProgress />
+          <Nav />
+          <main id="main">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+          <StickyMobileCTA />
+        </MotionProvider>
       </body>
     </html>
   );

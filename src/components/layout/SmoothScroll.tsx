@@ -3,6 +3,7 @@
 import Lenis from "lenis";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useReducedMotion } from "@/components/motion/MotionPreference";
 
 /**
  * Lenis smooth scroll.
@@ -12,10 +13,11 @@ import { usePathname } from "next/navigation";
  */
 export function SmoothScroll() {
   const pathname = usePathname();
+  const reduced = useReducedMotion();
 
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reduced.matches) return;
+    // Follows the visitor's override, not just the OS media query.
+    if (reduced) return;
 
     const lenis = new Lenis({
       duration: 1.05,
@@ -48,7 +50,7 @@ export function SmoothScroll() {
       cancelAnimationFrame(frame);
       lenis.destroy();
     };
-  }, []);
+  }, [reduced]);
 
   // Route changes should land at the top, like a normal navigation.
   useEffect(() => {

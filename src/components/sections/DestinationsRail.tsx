@@ -9,6 +9,7 @@ import { DestinationCard } from "@/components/cards/DestinationCard";
 import { Button } from "@/components/ui/button";
 import { Container, Section, SectionHeading } from "@/components/ui/section";
 import { destinations } from "@/content/destinations";
+import { useReducedMotion } from "@/components/motion/MotionPreference";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,15 +23,17 @@ gsap.registerPlugin(ScrollTrigger);
 export function DestinationsRail() {
   const section = useRef<HTMLDivElement>(null);
   const rail = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
+    // The pin is large-scale movement, so it stays off under reduced motion —
+    // the rail degrades to the same scroll-snap carousel mobile uses.
+    if (reduced) return;
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
       mm.add(
-        {
-          desktop: "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
-        },
+        { desktop: "(min-width: 1024px)" },
         () => {
           const track = rail.current;
           const wrapper = section.current;
@@ -67,7 +70,7 @@ export function DestinationsRail() {
       window.removeEventListener("load", refresh);
       ctx.revert();
     };
-  }, []);
+  }, [reduced]);
 
   return (
     <div ref={section} className="relative">

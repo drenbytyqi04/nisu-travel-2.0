@@ -228,13 +228,32 @@ html.lenis body {
    Motion — everything below collapses under reduced-motion.
    ============================================================ */
 
+/*
+ * Two layers, so the footer toggle can override the operating system:
+ *   1. Before hydration (and by default) the OS preference applies.
+ *   2. Once MotionProvider stamps data-motion on <html>, that wins.
+ *
+ * Ambient and looping animations stop entirely. Transitions are shortened
+ * rather than removed: a 150ms colour or opacity change carries no
+ * vestibular risk, and killing it outright makes hover and focus states feel
+ * broken rather than calm.
+ */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  html:not([data-motion="full"]) *,
+  html:not([data-motion="full"]) *::before,
+  html:not([data-motion="full"]) *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 150ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 150ms !important;
+  scroll-behavior: auto !important;
 }

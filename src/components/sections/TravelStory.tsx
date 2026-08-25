@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {motion, useScroll, useTransform } from "framer-motion";
+import { useReducedMotion } from "@/components/motion/MotionPreference";
 import { useRef } from "react";
 import { Media } from "@/components/media/Media";
 import { AnimatedText } from "@/components/motion/AnimatedText";

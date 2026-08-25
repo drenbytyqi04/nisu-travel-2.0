@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {motion, useScroll, useTransform } from "framer-motion";
+import { useReducedMotion } from "@/components/motion/MotionPreference";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
@@ -64,12 +65,12 @@ export function Hero() {
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
                 className="block"
-                initial={{ y: "110%" }}
-                animate={{ y: "0%" }}
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
                 transition={{
-                  duration: 1.1,
-                  delay: 0.28 + i * 0.11,
-                  ease: [0.16, 1, 0.3, 1],
+                  duration: reduced ? 0.5 : 1.1,
+                  delay: 0.28 + i * (reduced ? 0.06 : 0.11),
+                  ease: reduced ? "easeOut" : [0.16, 1, 0.3, 1],
                 }}
               >
                 {line}

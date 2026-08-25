@@ -138,8 +138,29 @@ src/
   pinned section on the page, per the perf/UX guidance)
 - **Lenis** — smooth scroll, fully disabled under `prefers-reduced-motion`
 
-Every animation collapses under `prefers-reduced-motion`, and all content is
-present in the DOM and readable without JavaScript.
+### Motion preference
+
+The operating system decides by default. Under reduced motion the site drops
+all *travel* — parallax, the pinned rail, Lenis, the loading screen, magnetic
+hover — but keeps opacity cross-fades, which carry no vestibular risk. A page
+where nothing resolves reads as broken, not calm.
+
+**Windows reports `prefers-reduced-motion: reduce` whenever Settings →
+Accessibility → Visual effects → "Animation effects" is off** — a setting many
+people switch off for battery or performance, not motion sensitivity. macOS
+has "Reduce motion" off by default, so the same site can look animated on a Mac
+and static on Windows.
+
+Because of that mismatch, the footer carries an **Animations** switch that
+overrides the OS per browser (stored in `localStorage` under `nisu:motion`).
+`MotionProvider` is the single source of truth — Framer Motion, GSAP, Lenis
+and the CSS rules all read from it via `useReducedMotion()` in
+`components/motion/MotionPreference.tsx`, never from the raw media query.
+
+All content is present in the DOM and readable without JavaScript, and reveals
+use `useReveal`, which shows anything already at or above the fold on mount —
+so jumping to an anchor or restoring a scroll position can never strand a
+section at zero opacity.
 
 ## Accessibility & performance notes
 

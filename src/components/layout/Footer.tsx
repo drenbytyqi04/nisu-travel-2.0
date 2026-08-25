@@ -1,5 +1,6 @@
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { MotionToggle } from "@/components/layout/MotionToggle";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import {
   contact,
@@ -32,8 +33,9 @@ export function Footer() {
               A travel agency in Prishtina planning journeys for travellers
               across Kosovo and the Albanian diaspora.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col items-start gap-5">
               <WhatsAppLink size="sm" />
+              <MotionToggle />
             </div>
           </div>
 
