@@ -33,10 +33,10 @@ type ContactConfig = {
 };
 
 export const contact: ContactConfig = {
-  /** TODO: add the real number in international format, e.g. "+383 44 000 000". */
-  phone: "",
-  /** TODO: digits only, no + or spaces, e.g. "38344000000". Powers every WhatsApp CTA. */
-  whatsapp: "",
+  /** Display format. `telLink()` strips it down for the tel: href. */
+  phone: "+383 43 500 435",
+  /** Digits only, no + or spaces — this is what wa.me expects. */
+  whatsapp: "38343500435",
   /** TODO: add the real inbox, e.g. "hello@nisutravel.com". */
   email: "",
   /** Street address intentionally omitted until confirmed. */

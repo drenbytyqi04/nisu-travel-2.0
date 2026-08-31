@@ -39,7 +39,7 @@ social links.
 
 These are deliberately blank because the real values were not supplied:
 
-- `contact.phone`, `contact.whatsapp`, `contact.email`
+- `contact.email`
 - `contact.street`, `contact.mapsUrl`, `contact.mapsEmbedUrl`
 - `social.instagram`, `social.facebook`, `social.tiktok`
 - `site.url` — currently `https://nisutravel.com`, update to the real domain
